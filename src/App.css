@@ -1,38 +1,221 @@
-.App {
+:root {
+  color-scheme: light;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: #102a43;
+  background: #eff3ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #eff3ff 0%, #f8fbff 100%);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.app-header {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 32px 24px;
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  color: white;
+  border-radius: 0 0 28px 28px;
+  box-shadow: 0 28px 80px rgba(15,23,42,0.16);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.brand {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.meta {
+  color: rgba(255,255,255,0.88);
+  font-size: 0.98rem;
+}
+
+.app-main {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 32px 20px 40px;
+  display: grid;
+  gap: 24px;
+}
+
+.app-panel {
+  background: white;
+  border-radius: 28px;
+  box-shadow: 0 20px 60px rgba(15,23,42,0.08);
+  padding: 28px;
+}
+
+.panel-title,
+.panel-header h2 {
+  margin: 0;
+  font-size: 1.9rem;
+  color: #0f172a;
+}
+
+.panel-description {
+  margin: 12px 0 0;
+  color: #475569;
+  line-height: 1.8;
+}
+
+.message-form {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 160px;
+  padding: 18px 20px;
+  border-radius: 22px;
+  border: 1px solid rgba(15,23,42,0.12);
+  background: #f8fbff;
+  color: #102a43;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.14);
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.button {
+  border: none;
+  border-radius: 999px;
+  padding: 14px 22px;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+}
+
+.button-primary {
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  color: white;
+  box-shadow: 0 14px 40px rgba(79,70,229,0.2);
+}
+
+.button-secondary,
+.button-ghost {
+  background: #f8fbff;
+  color: #102a43;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.alert {
+  margin-top: 16px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.loading,
+.empty-state {
+  padding: 18px;
+  border-radius: 18px;
+  background: #f5f8ff;
+  color: #52667a;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.message-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+  list-style: none;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.message-card {
+  padding: 20px;
+  border-radius: 20px;
+  background: #f8fbff;
+  border: 1px solid rgba(15,23,42,0.08);
+}
+
+.message-card p {
+  margin: 0;
+  white-space: pre-wrap;
+  line-height: 1.8;
+}
+
+.message-card time {
+  margin-top: 10px;
+  display: block;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.app-footer {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+  color: #475569;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  background: rgba(15,23,42,0.05);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+@media (max-width: 840px) {
+  .app-main {
+    padding: 22px 16px 32px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 640px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  to {
-    transform: rotate(360deg);
+
+  .form-actions {
+    flex-direction: column;
   }
 }
